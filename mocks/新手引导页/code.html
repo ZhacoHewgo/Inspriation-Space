@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Stitch Design</title>
+<link href="data:image/x-icon;base64," rel="icon" type="image/x-icon"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com/" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800&amp;display=swap" rel="stylesheet"/>
+<script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "primary": "#13a4ec",
+            "background-light": "#f6f7f8",
+            "background-dark": "#101c22",
+          },
+          fontFamily: {
+            "display": ["Plus Jakarta Sans"]
+          },
+          borderRadius: {
+            "DEFAULT": "0.5rem",
+            "lg": "1rem",
+            "xl": "1.5rem",
+            "full": "9999px"
+          },
+        },
+      },
+    }
+  </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display">
+<div class="flex flex-col h-screen">
+<main class="flex-1 flex flex-col">
+<div class="flex-1 flex flex-col items-center justify-center pt-8 px-6">
+<div class="w-full max-w-sm">
+<div class="aspect-square w-full bg-center bg-no-repeat bg-cover rounded-xl" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAd5irX1X55LuW0NVtOXeALBB87BGXqWJvXMxD3_FUWbWfLODreBB0s6S2xu4ln0k8zUkYVmP4MjKGDdDVLg7k9TYh6cBamx6UCoXzihlVF46h6XcctlZYLbxYIKA8-7r5sLS_I01WZjCqkljk0p62rjYsGrhc9AV0b7rf1kZYCl7I_TRmxFgGCdy4iWFE2J4POx46O3_B8Ip-Juhm1ObuQtw6qTQC0MoRxc-eEbMkDOGJ15t8S-RAkSuWbORWIvZbdzgD8cN92-qPx");'></div>
+</div>
+</div>
+<div class="px-6 pb-8 pt-8 text-center">
+<h1 class="text-2xl font-bold text-gray-900 dark:text-white">Capture Your Ideas</h1>
+<p class="mt-2 text-gray-600 dark:text-gray-300">Easily jot down your thoughts and inspirations anytime, anywhere.</p>
+</div>
+<div class="flex justify-center items-center gap-2 pb-8">
+<div class="h-2 w-2 rounded-full bg-primary"></div>
+<div class="h-2 w-2 rounded-full bg-primary/20 dark:bg-primary/30"></div>
+<div class="h-2 w-2 rounded-full bg-primary/20 dark:bg-primary/30"></div>
+</div>
+</main>
+<footer class="p-4 bg-background-light dark:bg-background-dark">
+<div class="flex justify-between items-center gap-4">
+<button class="flex-1 px-6 py-3 rounded-lg text-sm font-bold bg-primary/10 dark:bg-primary/20 text-primary">
+          Skip
+        </button>
+<button class="flex-1 px-6 py-3 rounded-lg text-sm font-bold bg-primary text-white">
+          Next
+        </button>
+</div>
+</footer>
+</div>
+
+</body></html>

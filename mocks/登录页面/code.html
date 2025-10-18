@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Inspiration Login</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms"></script>
+<script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "primary": "#13a4ec",
+            "background-light": "#f6f7f8",
+            "background-dark": "#101c22",
+            "foreground-light": "#111827",
+            "foreground-dark": "#f9fafb",
+            "input-light": "#ffffff",
+            "input-dark": "#1f2937",
+            "placeholder-light": "#9ca3af",
+            "placeholder-dark": "#6b7280",
+            "subtle-light": "#6b7280",
+            "subtle-dark": "#9ca3af"
+          },
+          fontFamily: {
+            "display": ["Plus Jakarta Sans", "sans-serif"]
+          },
+          borderRadius: {
+            "DEFAULT": "0.5rem",
+            "lg": "1rem",
+            "xl": "1.5rem",
+            "full": "9999px"
+          },
+        },
+      },
+    }
+  </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display">
+<div class="flex flex-col h-screen">
+<main class="flex-grow flex flex-col items-center justify-center px-4">
+<div class="w-full max-w-sm text-center">
+<h1 class="text-4xl font-bold text-foreground-light dark:text-foreground-dark mb-8">
+          Inspiration
+        </h1>
+<form class="space-y-4">
+<div>
+<input class="w-full h-14 px-4 bg-input-light dark:bg-input-dark border border-gray-300 dark:border-gray-700 text-foreground-light dark:text-foreground-dark placeholder-placeholder-light dark:placeholder-placeholder-dark rounded-lg focus:ring-primary focus:border-primary" placeholder="Username" type="text"/>
+</div>
+<div>
+<input class="w-full h-14 px-4 bg-input-light dark:bg-input-dark border border-gray-300 dark:border-gray-700 text-foreground-light dark:text-foreground-dark placeholder-placeholder-light dark:placeholder-placeholder-dark rounded-lg focus:ring-primary focus:border-primary" placeholder="Password" type="password"/>
+</div>
+<button class="w-full h-14 px-4 bg-primary text-white font-bold rounded-lg hover:bg-primary/90 transition-colors duration-300" type="submit">
+            Log In
+          </button>
+</form>
+<div class="mt-6 space-y-2">
+<a class="block text-sm text-subtle-light dark:text-subtle-dark hover:text-primary dark:hover:text-primary transition-colors duration-300" href="#">
+            Forgot password?
+          </a>
+<a class="block text-sm text-subtle-light dark:text-subtle-dark hover:text-primary dark:hover:text-primary transition-colors duration-300" href="#">
+            Register new account
+          </a>
+</div>
+</div>
+</main>
+</div>
+
+</body></html>

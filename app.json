@@ -1,0 +1,24 @@
+{
+  "expo": {
+    "name": "灵感空间",
+    "slug": "inspiration-space",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "userInterfaceStyle": "automatic",
+    "splash": {
+      "resizeMode": "contain",
+      "backgroundColor": "#13a4ec"
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "ios": {
+      "supportsTablet": true
+    },
+    "android": {
+      "adaptiveIcon": {
+        "backgroundColor": "#13a4ec"
+      }
+    }
+  }
+}

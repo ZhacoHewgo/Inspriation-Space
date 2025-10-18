@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>New Idea Modal</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800&amp;display=swap" rel="stylesheet"/>
+<script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "primary": "#13a4ec",
+            "background-light": "#f6f7f8",
+            "background-dark": "#101c22",
+          },
+          fontFamily: {
+            "display": ["Plus Jakarta Sans"]
+          },
+          borderRadius: {
+            "DEFAULT": "0.5rem",
+            "lg": "1rem",
+            "xl": "1.5rem",
+            "full": "9999px"
+          },
+        },
+      },
+    }
+  </script>
+<style>
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display">
+<div class="fixed inset-0 bg-black/30 dark:bg-black/50 flex justify-center items-center p-4">
+<div class="bg-white dark:bg-gray-800 w-full max-w-sm rounded-xl shadow-lg">
+<div class="p-6">
+<h2 class="text-xl font-bold text-gray-900 dark:text-white mb-4 text-center">新增灵感</h2>
+<textarea class="w-full h-40 p-4 rounded-lg bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 border-2 border-transparent focus:border-primary focus:ring-0 resize-none transition-colors" placeholder="在这里输入你的灵感…"></textarea>
+<div class="grid grid-cols-2 gap-4 mt-6">
+<button class="w-full py-3 px-4 rounded-lg border border-gray-300 dark:border-gray-600 text-gray-800 dark:text-white font-bold text-base transition-colors hover:bg-gray-100 dark:hover:bg-gray-700">
+            取消
+          </button>
+<button class="w-full py-3 px-4 rounded-lg bg-primary text-white font-bold text-base transition-colors hover:bg-primary/90">
+            保存灵感
+          </button>
+</div>
+</div>
+</div>
+</div>
+
+</body></html>

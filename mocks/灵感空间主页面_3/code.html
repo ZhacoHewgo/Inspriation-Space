@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Stitch Design</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            primary: "#13a4ec",
+            "background-light": "#f6f7f8",
+            "background-dark": "#101c22",
+          },
+          fontFamily: {
+            display: ["Plus Jakarta Sans"],
+          },
+          borderRadius: {
+            DEFAULT: "0.5rem",
+            lg: "1rem",
+            xl: "1.5rem",
+            full: "9999px"
+          },
+        },
+      },
+    };
+  </script>
+<style>
+    .line-clamp-3 {
+      overflow: hidden;
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 3;
+    }
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="font-display">
+<div class="flex h-auto min-h-screen w-full flex-col bg-background-light dark:bg-background-dark">
+<header class="sticky top-0 z-10 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-sm px-4 pt-4 pb-2">
+<div class="flex items-center justify-between mb-4">
+<h1 class="text-xl font-bold text-slate-800 dark:text-white">灵感空间</h1>
+<button class="flex h-10 w-10 items-center justify-center rounded-full text-slate-800 dark:text-white">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+</div>
+<div class="relative">
+<input class="w-full rounded-full border-slate-300 bg-white py-2 pl-10 pr-4 text-slate-700 placeholder-slate-400 focus:border-primary focus:ring-primary dark:border-slate-700 dark:bg-slate-800 dark:text-slate-300 dark:placeholder-slate-500" placeholder="查找灵感..." type="text"/>
+<div class="absolute inset-y-0 left-0 flex items-center pl-3">
+<svg class="h-5 w-5 text-slate-400 dark:text-slate-500" fill="currentColor" height="20" viewBox="0 0 256 256" width="20" xmlns="http://www.w3.org/2000/svg">
+<path d="M229.66,218.34l-50.07-50.06a88.11,88.11,0,1,0-11.31,11.31l50.06,50.07a8,8,0,0,0,11.32-11.32ZM40,112a72,72,0,1,1,72,72A72.08,72.08,0,0,1,40,112Z"></path>
+</svg>
+</div>
+</div>
+<div class="flex items-center justify-between py-2">
+<div class="flex items-center gap-4">
+<button class="flex items-center gap-1 text-sm font-medium text-slate-600 dark:text-slate-300">
+<span class="material-symbols-outlined text-base">filter_list</span>
+<span>筛选</span>
+</button>
+<button class="flex items-center gap-1 text-sm font-medium text-slate-600 dark:text-slate-300">
+<span class="material-symbols-outlined text-base">swap_vert</span>
+<span>排序</span>
+</button>
+</div>
+<div class="flex items-center gap-1 text-sm font-medium text-slate-600 dark:text-slate-300">
+<button class="flex items-center gap-1 text-sm font-medium text-slate-600 dark:text-slate-300">
+<span class="material-symbols-outlined text-base">select_all</span>
+<span>批量操作</span>
+</button>
+</div>
+</div>
+</header>
+<main class="flex-1">
+<div class="p-4">
+<div class="flex items-center justify-center bg-slate-200 dark:bg-slate-800 rounded-full p-1 mb-4">
+<button class="flex-1 py-1.5 px-3 text-sm font-semibold text-slate-700 dark:text-slate-300 rounded-full">模块视图</button>
+<button class="flex-1 py-1.5 px-3 text-sm font-semibold bg-white dark:bg-slate-900 text-primary rounded-full shadow-sm">日历视图</button>
+</div>
+<p class="text-sm text-slate-600 dark:text-slate-400 mb-4">欢迎来到灵感空间，请记录下你每一个宝贵的灵感。</p>
+<div class="bg-white dark:bg-slate-900 rounded-xl shadow p-4">
+<div class="flex items-center justify-between mb-4">
+<div class="flex items-center gap-2">
+<button class="text-slate-500 dark:text-slate-400">
+<span class="material-symbols-outlined">chevron_left</span>
+</button>
+<h3 class="text-lg font-bold text-slate-800 dark:text-white">2024年10月</h3>
+<button class="text-slate-500 dark:text-slate-400">
+<span class="material-symbols-outlined">chevron_right</span>
+</button>
+</div>
+<button class="text-sm font-medium text-primary">今天</button>
+</div>
+<div class="grid grid-cols-7 gap-y-2 text-center text-sm">
+<div class="font-medium text-slate-500 dark:text-slate-400">日</div>
+<div class="font-medium text-slate-500 dark:text-slate-400">一</div>
+<div class="font-medium text-slate-500 dark:text-slate-400">二</div>
+<div class="font-medium text-slate-500 dark:text-slate-400">三</div>
+<div class="font-medium text-slate-500 dark:text-slate-400">四</div>
+<div class="font-medium text-slate-500 dark:text-slate-400">五</div>
+<div class="font-medium text-slate-500 dark:text-slate-400">六</div>
+<div class="text-slate-400 dark:text-slate-600">29</div>
+<div class="text-slate-400 dark:text-slate-600">30</div>
+<div class="relative"><span class="text-slate-800 dark:text-white">1</span></div>
+<div class="relative"><span class="text-slate-800 dark:text-white">2</span></div>
+<div class="relative"><span class="text-slate-800 dark:text-white">3</span><div class="absolute bottom-0 left-1/2 -translate-x-1/2 h-1 w-1 rounded-full bg-primary/50"></div></div>
+<div class="relative"><span class="text-slate-800 dark:text-white">4</span></div>
+<div class="relative"><span class="text-slate-800 dark:text-white">5</span></div>
+<div class="relative"><span class="text-slate-800 dark:text-white">6</span></div>
+<div class="relative"><span class="text-slate-800 dark:text-white">7</span><div class="absolute bottom-0 left-1/2 -translate-x-1/2 h-1 w-1 rounded-full bg-primary"></div></div>
+<div class="relative"><span class="text-slate-800 dark:text-white">8</span></div>
+<div class="relative"><span class="text-slate-800 dark:text-white">9</span></div>
+<div class="relative"><span class="text-slate-800 dark:text-white">10</span></div>
+<div class="relative"><span class="text-slate-800 dark:text-white">11</span><div class="absolute bottom-0 left-1/2 -translate-x-1/2 h-1 w-1 rounded-full bg-primary/50"></div></div>
+<div class="relative"><span class="text-slate-800 dark:text-white">12</span></div>
+<div class="relative"><span class="text-slate-800 dark:text-white">13</span></div>
+<div class="relative"><span class="text-slate-800 dark:text-white">14</span></div>
+<div class="relative"><span class="text-slate-800 dark:text-white">15</span><div class="absolute bottom-0 left-1/2 -translate-x-1/2 h-1 w-1 rounded-full bg-primary/20"></div></div>
+<div class="relative"><span class="text-slate-800 dark:text-white">16</span></div>
+<div class="relative"><span class="bg-primary text-white rounded-full w-7 h-7 flex items-center justify-center mx-auto">17</span></div>
+<div class="relative"><span class="text-slate-800 dark:text-white">18</span></div>
+<div class="relative"><span class="text-slate-800 dark:text-white">19</span></div>
+<div class="relative"><span class="text-slate-800 dark:text-white">20</span><div class="absolute bottom-0 left-1/2 -translate-x-1/2 h-1 w-1 rounded-full bg-primary"></div></div>
+<div class="relative"><span class="text-slate-800 dark:text-white">21</span></div>
+<div class="relative"><span class="text-slate-800 dark:text-white">22</span></div>
+<div class="relative"><span class="text-slate-800 dark:text-white">23</span></div>
+<div class="relative"><span class="text-slate-800 dark:text-white">24</span></div>
+<div class="relative"><span class="text-slate-800 dark:text-white">25</span></div>
+<div class="relative"><span class="text-slate-800 dark:text-white">26</span></div>
+<div class="relative"><span class="text-slate-800 dark:text-white">27</span></div>
+<div class="relative"><span class="text-slate-800 dark:text-white">28</span></div>
+<div class="relative"><span class="text-slate-800 dark:text-white">29</span></div>
+<div class="relative"><span class="text-slate-800 dark:text-white">30</span></div>
+<div class="relative"><span class="text-slate-800 dark:text-white">31</span><div class="absolute bottom-0 left-1/2 -translate-x-1/2 h-1 w-1 rounded-full bg-primary/50"></div></div>
+<div class="text-slate-400 dark:text-slate-600">1</div>
+<div class="text-slate-400 dark:text-slate-600">2</div>
+</div>
+</div>
+<div class="mt-6 space-y-4">
+<h3 class="text-lg font-bold text-slate-800 dark:text-white">10月17日的灵感</h3>
+<div class="flex flex-col rounded-xl bg-white p-4 dark:bg-slate-900 shadow">
+<h3 class="font-bold text-slate-800 dark:text-white mb-2">移动应用设计</h3>
+<p class="text-sm text-slate-500 dark:text-slate-400 line-clamp-3">为大学生设计一款时间管理应用的初步构思，界面设计要简洁，突出核心功能。</p>
+<div class="text-xs text-slate-400 dark:text-slate-500 mt-2">10:45 AM</div>
+</div>
+<div class="flex flex-col rounded-xl bg-white p-4 dark:bg-slate-900 shadow">
+<h3 class="font-bold text-slate-800 dark:text-white mb-2">艺术构思</h3>
+<p class="text-sm text-slate-500 dark:text-slate-400 line-clamp-3">一组以“城市寂静”为主题的摄影系列，捕捉大都市中宁静的瞬间。</p>
+<div class="text-xs text-slate-400 dark:text-slate-500 mt-2">09:30 AM</div>
+</div>
+</div>
+</div>
+</main>
+<footer class="sticky bottom-0 bg-background-light/80 pb-safe dark:bg-background-dark/80 backdrop-blur-sm">
+<div class="flex border-t border-slate-200 dark:border-slate-800 px-4 pt-3 pb-3">
+<a class="flex flex-1 flex-col items-center justify-end gap-1 text-slate-500 dark:text-slate-400" href="#">
+<svg fill="currentColor" height="24" viewBox="0 0 256 256" width="24" xmlns="http://www.w3.org/2000/svg">
+<path d="M88,96a8,8,0,0,1,8-8h64a8,8,0,0,1,0,16H96A8,8,0,0,1,88,96Zm8,40h64a8,8,0,0,0,0-16H96a8,8,0,0,0,0,16Zm32,16H96a8,8,0,0,0,0,16h32a8,8,0,0,0,0-16ZM224,48V156.69A15.86,15.86,0,0,1,219.31,168L168,219.31A15.86,15.86,0,0,1,156.69,224H48a16,16,0,0,1-16-16V48A16,16,0,0,1,48,32H208A16,16,0,0,1,224,48ZM48,208H152V160a8,8,0,0,1,8-8h48V48H48Zm120-40v28.7L196.69,168Z"></path>
+</svg>
+<p class="text-xs font-medium">记录</p>
+</a>
+<a class="flex flex-1 flex-col items-center justify-end gap-1 text-primary" href="#">
+<svg fill="currentColor" height="24" viewBox="0 0 256 256" width="24" xmlns="http://www.w3.org/2000/svg">
+<path d="M208,144a15.78,15.78,0,0,1-10.42,14.94l-51.65,19-19,51.61a15.92,15.92,0,0,1-29.88,0L78,178l-51.62-19a15.92,15.92,0,0,1,0-29.88l51.65-19,19-51.61a15.92,15.92,0,0,1,29.88,0l19,51.65,51.61,19A15.78,15.78,0,0,1,208,144ZM152,48h16V64a8,8,0,0,0,16,0V48h16a8,8,0,0,0,0-16H184V16a8,8,0,0,0-16,0V32H152a8,8,0,0,0,0,16Zm88,32h-8V72a8,8,0,0,0-16,0v8h-8a8,8,0,0,0,0,16h8v8a8,8,0,0,0,16,0V96h8a8,8,0,0,0,0-16Z"></path>
+</svg>
+<p class="text-xs font-bold">灵感空间</p>
+</a>
+<a class="flex flex-1 flex-col items-center justify-end gap-1 text-slate-500 dark:text-slate-400" href="#">
+<svg fill="currentColor" height="24" viewBox="0 0 256 256" width="24" xmlns="http://www.w3.org/2000/svg">
+<path d="M128,80a48,48,0,1,0,48,48A48.05,48.05,0,0,0,128,80Zm0,80a32,32,0,1,1,32-32A32,32,0,0,1,128,160Zm88-29.84q.06-2.16,0-4.32l14.92-18.64a8,8,0,0,0,1.48-7.06,107.21,107.21,0,0,0-10.88-26.25,8,8,0,0,0-6-3.93l-23.72-2.64q-1.48-1.56-3-3L186,40.54a8,8,0,0,0-3.94-6,107.71,107.71,0,0,0-26.25-10.87,8,8,0,0,0-7.06,1.49L130.16,40Q128,40,125.84,40L107.2,25.11a8,8,0,0,0-7.06-1.48A107.6,107.6,0,0,0,73.89,34.51a8,8,0,0,0-3.93,6L67.32,64.27q-1.56,1.49-3,3L40.54,70a8,8,0,0,0-6,3.94,107.71,107.71,0,0,0-10.87,26.25,8,8,0,0,0,1.49,7.06L40,125.84Q40,128,40,130.16L25.11,148.8a8,8,0,0,0-1.48,7.06,107.21,107.21,0,0,0,10.88,26.25,8,8,0,0,0,6,3.93l23.72,2.64q1.49,1.56,3,3L70,215.46a8,8,0,0,0,3.94,6,107.71,107.71,0,0,0,26.25,10.87,8,8,0,0,0,7.06-1.49L125.84,216q2.16.06,4.32,0l18.64,14.92a8,8,0,0,0,7.06,1.48,107.21,107.21,0,0,0,26.25-10.88,8,8,0,0,0,3.93-6l2.64-23.72q1.56-1.48,3-3L215.46,186a8,8,0,0,0,6-3.94,107.71,107.71,0,0,0,10.87-26.25,8,8,0,0,0-1.49-7.06Zm-16.1-6.5a73.93,73.93,0,0,1,0,8.68,8,8,0,0,0,1.74,5.48l14.19,17.73a91.57,91.57,0,0,1-6.23,15L187,173.11a8,8,0,0,0-5.1,2.64,74.11,74.11,0,0,1-6.14,6.14,8,8,0,0,0-2.64,5.1l-2.51,22.58a91.32,91.32,0,0,1-15,6.23l-17.74-14.19a8,8,0,0,0-5-1.75h-.48a73.93,73.93,0,0,1-8.68,0,8,8,0,0,0-5.48,1.74L100.45,215.8a91.57,91.57,0,0,1-15-6.23L82.89,187a8,8,0,0,0-2.64-5.1,74.11,74.11,0,0,1-6.14-6.14,8,8,0,0,0-5.1-2.64L46.43,170.6a91.32,91.32,0,0,1-6.23-15l14.19-17.74a8,8,0,0,0,1.74-5.48,73.93,73.93,0,0,1,0-8.68,8,8,0,0,0-1.74-5.48L40.2,100.45a91.57,91.57,0,0,1,6.23-15L69,82.89a8,8,0,0,0,5.1-2.64,74.11,74.11,0,0,1,6.14-6.14A8,8,0,0,0,82.89,69L85.4,46.43a91.32,91.32,0,0,1,15-6.23l17.74,14.19a8,8,0,0,0,5.48,1.74,73.93,73.93,0,0,1,8.68,0,8,8,0,0,0,5.48-1.74L155.55,40.2a91.57,91.57,0,0,1,15,6.23L173.11,69a8,8,0,0,0,2.64,5.1,74.11,74.11,0,0,1,6.14,6.14,8,8,0,0,0,5.1,2.64l22.58,2.51a91.32,91.32,0,0,1,6.23,15l-14.19,17.74A8,8,0,0,0,199.87,123.66Z"></path>
+</svg>
+<p class="text-xs font-medium">设置</p>
+</a>
+</div>
+</footer>
+</div>
+
+</body></html>

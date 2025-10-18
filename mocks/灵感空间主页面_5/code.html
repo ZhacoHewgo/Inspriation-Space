@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Stitch Design</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            primary: "#13a4ec",
+            "background-light": "#f6f7f8",
+            "background-dark": "#101c22",
+          },
+          fontFamily: {
+            display: ["Plus Jakarta Sans"],
+          },
+          borderRadius: {
+            DEFAULT: "0.5rem",
+            lg: "1rem",
+            xl: "1.5rem",
+            full: "9999px"
+          },
+        },
+      },
+    };
+  </script>
+<style>
+    .line-clamp-3 {
+      overflow: hidden;
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 3;
+    }
+    body {
+      min-height: max(884px, 100 d);
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100 d);
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="font-display">
+<div class="flex h-auto min-h-screen w-full flex-col bg-background-light dark:bg-background-dark">
+<header class="sticky top-0 z-10 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-sm px-4 pt-4 pb-2">
+<div class="flex items-center justify-between mb-4">
+<h1 class="text-xl font-bold text-slate-800 dark:text-white">灵感空间</h1>
+<div class="flex items-center gap-2">
+<button class="flex h-10 w-10 items-center justify-center rounded-full text-slate-800 dark:text-white">
+<span class="material-symbols-outlined">insert_chart</span>
+</button>
+<button class="flex h-10 w-10 items-center justify-center rounded-full text-slate-800 dark:text-white">
+<span class="material-symbols-outlined">calendar_month</span>
+</button>
+<button class="flex h-10 w-10 items-center justify-center rounded-full text-slate-800 dark:text-white">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+</div>
+</div>
+<div class="relative">
+<input class="w-full rounded-full border-slate-300 bg-white py-2 pl-10 pr-4 text-slate-700 placeholder-slate-400 focus:border-primary focus:ring-primary dark:border-slate-700 dark:bg-slate-800 dark:text-slate-300 dark:placeholder-slate-500" placeholder="查找灵感..." type="text"/>
+<div class="absolute inset-y-0 left-0 flex items-center pl-3">
+<svg class="h-5 w-5 text-slate-400 dark:text-slate-500" fill="currentColor" height="20" viewBox="0 0 256 256" width="20" xmlns="http://www.w3.org/2000/svg">
+<path d="M229.66,218.34l-50.07-50.06a88.11,88.11,0,1,0-11.31,11.31l50.06,50.07a8,8,0,0,0,11.32-11.32ZM40,112a72,72,0,1,1,72,72A72.08,72.08,0,0,1,40,112Z"></path>
+</svg>
+</div>
+</div>
+<div class="flex items-center justify-end gap-4 py-2">
+<button class="flex items-center gap-1 text-sm font-medium text-slate-600 dark:text-slate-300">
+<span class="material-symbols-outlined text-base">filter_list</span>
+<span>筛选</span>
+</button>
+<button class="flex items-center gap-1 text-sm font-medium text-slate-600 dark:text-slate-300">
+<span class="material-symbols-outlined text-base">swap_vert</span>
+<span>排序</span>
+</button>
+<button class="flex items-center gap-1 text-sm font-medium text-slate-600 dark:text-slate-300">
+<span class="material-symbols-outlined text-base">check_box</span>
+<span>批量操作</span>
+</button>
+</div>
+</header>
+<main class="flex-1">
+<div class="p-4">
+<p class="text-sm text-slate-600 dark:text-slate-400 mb-4">欢迎来到灵感空间，请记录下你每一个宝贵的灵感。</p>
+<div class="grid grid-cols-2 gap-4">
+<a class="relative aspect-square rounded-xl overflow-hidden shadow-sm group" href="#">
+<img alt="Background for Learning module" class="absolute inset-0 w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC-jmWZa_jtYCLOSseUmSwceit7FpFIUgfRboJ8IzMHz3ylowlEJa2oyG6C-RCWkZ6g4N37AYj0gpbo10CyOjM-l7oCLG32wGUfaUOczer_yAHoRwCJw7X51Ccrz5v9agkQ5gLmo6fpvd1L6dbKzUBz22BHKGMwsgL_rhlRYqkduleHP9kDsuZrJBigVJesK-WwEhyF3WH9bwDxFDbCW9-yoPncbNkxI-V4cQyu3Bz3w9mz7uVTE3ZlDetTq2FG74oUE5gPtAI4vLVL"/>
+<div class="absolute inset-0 bg-black/30"></div>
+<div class="relative flex flex-col justify-between h-full p-4">
+<div>
+<h3 class="font-bold text-white text-lg">学习</h3>
+<p class="text-sm text-white/80">23个灵感</p>
+</div>
+<div class="self-end opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="w-8 h-8 rounded-full bg-white/20 backdrop-blur-sm text-white flex items-center justify-center">
+<span class="material-symbols-outlined text-base">edit</span>
+</button>
+</div>
+</div>
+</a>
+<a class="relative aspect-square rounded-xl overflow-hidden shadow-sm group" href="#">
+<img alt="Background for Research module" class="absolute inset-0 w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD1azAiI1lxu3EaeRtbd6Z2iF13n812bFu-g5rohkKMfs5NDhj4FFduKyy5PS0rWgwq_op3XBTGYKgtPm9GmMrE7fdqn06oaExQrg9yC_vdU4Lt-zKEJi2GvFOKW0bH8cY0VPeoJeQ-_WoaIealFob73f3pt8YEub8rNO01RbbCATJSHdZIbikxM4p6cp64aCFXmbKy0yPq_3MA5Ts-N0rvCUX19M5NB9j1SSLz4p4XUK0dZlxEg03LU6A5ZV5jDxhJi1OY8QUdmlUY"/>
+<div class="absolute inset-0 bg-black/30"></div>
+<div class="relative flex flex-col justify-between h-full p-4">
+<div>
+<h3 class="font-bold text-white text-lg">科研</h3>
+<p class="text-sm text-white/80">15个灵感</p>
+</div>
+<div class="self-end opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="w-8 h-8 rounded-full bg-white/20 backdrop-blur-sm text-white flex items-center justify-center">
+<span class="material-symbols-outlined text-base">edit</span>
+</button>
+</div>
+</div>
+</a>
+<a class="relative aspect-square rounded-xl overflow-hidden shadow-sm group" href="#">
+<img alt="Background for Creation module" class="absolute inset-0 w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAfLsCLOCDOaubvrOBmWfiHSdvFM1L4xYjXN4rp8B-aGlybX8ltfIg5VYWGRxVkVD2O-V19j3RiGpSj9iSRa-sNxgfiAcWGnKSFCPtBoans40Pg3uoN9xfQQvjxa4VsTUgPMkroc5cryWHNtQGNEjh4uU0ZyGNMaxxH5GKCvTCoXBR1BA8DY0OXbAJ_t9h6qmJ3Avdwj6tyuMVmWLircsaieIrgkfGFx1N0Ixj_LmdGT4ikKcAcdyI7iiAPMQh57wU6BgJNweeBcZnM"/>
+<div class="absolute inset-0 bg-black/30"></div>
+<div class="relative flex flex-col justify-between h-full p-4">
+<div>
+<h3 class="font-bold text-white text-lg">创作</h3>
+<p class="text-sm text-white/80">8个灵感</p>
+</div>
+<div class="self-end opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="w-8 h-8 rounded-full bg-white/20 backdrop-blur-sm text-white flex items-center justify-center">
+<span class="material-symbols-outlined text-base">edit</span>
+</button>
+</div>
+</div>
+</a>
+<a class="relative aspect-square rounded-xl overflow-hidden shadow-sm group" href="#">
+<img alt="Background for Life module" class="absolute inset-0 w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBWEusUmu-R1oYCL9w1KQTTt6OTFcBUD45EWtUKqaoUBdm75HO63tVH37jFqSHuJLrkgzmc8JwXoQQNAQmKVev4C4apnu84MxDQUmIlqVaXoNHIEXvc7dZRsr_IYPDjmwhpEFGNn5Phg51leF1_j1GuBv8W0ARnlBbd5lHSpKiNNFLggVcGOiNwn-lN3C9WxCH_jPKVVBHOaCLFiBsxJAjnr0TCtyaGuiPUHfnhNWLFE4AxHdfmFuAjXVEDSkhueQMe27Zo3co-NBc9"/>
+<div class="absolute inset-0 bg-black/30"></div>
+<div class="relative flex flex-col justify-between h-full p-4">
+<div>
+<h3 class="font-bold text-white text-lg">生活</h3>
+<p class="text-sm text-white/80">31个灵感</p>
+</div>
+<div class="self-end opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="w-8 h-8 rounded-full bg-white/20 backdrop-blur-sm text-white flex items-center justify-center">
+<span class="material-symbols-outlined text-base">edit</span>
+</button>
+</div>
+</div>
+</a>
+</div>
+</div>
+</main>
+<footer class="sticky bottom-0 bg-background-light/80 pb-safe dark:bg-background-dark/80 backdrop-blur-sm">
+<div class="flex border-t border-slate-200 dark:border-slate-800 px-4 pt-3 pb-3">
+<a class="flex flex-1 flex-col items-center justify-end gap-1 text-slate-500 dark:text-slate-400" href="#">
+<span class="material-symbols-outlined">add_circle</span>
+<p class="text-xs font-medium">记录</p>
+</a>
+<a class="flex flex-1 flex-col items-center justify-end gap-1 text-primary" href="#">
+<span class="material-symbols-outlined">emoji_objects</span>
+<p class="text-xs font-bold">灵感空间</p>
+</a>
+<a class="flex flex-1 flex-col items-center justify-end gap-1 text-slate-500 dark:text-slate-400" href="#">
+<span class="material-symbols-outlined">settings</span>
+<p class="text-xs font-medium">设置</p>
+</a>
+</div>
+</footer>
+</div>
+
+</body></html>
