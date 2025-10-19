@@ -10,6 +10,10 @@ import {
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Colors } from '../constants/colors';
+import { useTheme } from '../context/ThemeContext';
+import BackgroundCustomScreen from './BackgroundCustomScreen';
+import ThemeSettingsScreen from './ThemeSettingsScreen';
+import TagManagementScreen from './TagManagementScreen';
 
 interface SettingItem {
   id: string;
@@ -21,8 +25,13 @@ interface SettingItem {
   onToggle?: (value: boolean) => void;
 }
 
-export default function SettingsScreen() {
-  const [darkMode, setDarkMode] = useState(false);
+interface SettingsScreenProps {
+  onBack?: () => void;
+}
+
+export default function SettingsScreen({ onBack }: SettingsScreenProps) {
+  const { isDarkMode, toggleDarkMode, colors } = useTheme();
+  const [currentScreen, setCurrentScreen] = useState<'settings' | 'background' | 'theme' | 'tags'>('settings');
 
   const generalSettings: SettingItem[] = [
     {
@@ -30,22 +39,22 @@ export default function SettingsScreen() {
       title: '主题设置',
       icon: '🎨',
       type: 'navigation',
-      onPress: () => Alert.alert('主题设置', '功能开发中...'),
+      onPress: () => setCurrentScreen('theme'),
     },
     {
       id: 'darkMode',
       title: '夜间模式',
       icon: '🌙',
       type: 'toggle',
-      value: darkMode,
-      onToggle: setDarkMode,
+      value: isDarkMode,
+      onToggle: toggleDarkMode,
     },
     {
       id: 'cardColors',
       title: '卡片颜色设置',
       icon: '🎨',
       type: 'navigation',
-      onPress: () => Alert.alert('卡片颜色设置', '功能开发中...'),
+      onPress: () => Alert.alert('卡片颜色设置', '您可以在新增灵感时选择卡片背景色，也可以在灵感详情页面进行修改'),
     },
   ];
 
@@ -55,7 +64,7 @@ export default function SettingsScreen() {
       title: '灵感空间背景自定义',
       icon: '🖼️',
       type: 'navigation',
-      onPress: () => Alert.alert('背景自定义', '功能开发中...'),
+      onPress: () => setCurrentScreen('background'),
     },
   ];
 
@@ -65,21 +74,21 @@ export default function SettingsScreen() {
       title: '上传照片',
       icon: '📁',
       type: 'navigation',
-      onPress: () => Alert.alert('上传照片', '功能开发中...'),
+      onPress: () => setCurrentScreen('background'),
     },
     {
       id: 'drawingCreation',
       title: '简笔画创作',
       icon: '✏️',
       type: 'navigation',
-      onPress: () => Alert.alert('简笔画创作', '功能开发中...'),
+      onPress: () => setCurrentScreen('background'),
     },
     {
       id: 'presetImages',
       title: '选择预设图片',
       icon: '🖼️',
       type: 'navigation',
-      onPress: () => Alert.alert('预设图片', '功能开发中...'),
+      onPress: () => setCurrentScreen('background'),
     },
   ];
 
@@ -89,7 +98,7 @@ export default function SettingsScreen() {
       title: '标签管理',
       icon: '🏷️',
       type: 'navigation',
-      onPress: () => Alert.alert('标签管理', '功能开发中...'),
+      onPress: () => setCurrentScreen('tags'),
     },
     {
       id: 'clearData',
@@ -122,7 +131,11 @@ export default function SettingsScreen() {
   const renderSettingItem = (item: SettingItem, isSubItem = false) => (
     <TouchableOpacity
       key={item.id}
-      style={[styles.settingItem, isSubItem && styles.subSettingItem]}
+      style={[
+        styles.settingItem, 
+        isSubItem && styles.subSettingItem,
+        { borderBottomColor: colors.border }
+      ]}
       onPress={item.onPress}
       disabled={item.type === 'toggle'}
     >
@@ -135,7 +148,8 @@ export default function SettingsScreen() {
         </View>
         <Text style={[
           styles.settingTitle,
-          isSubItem && styles.subSettingTitle
+          isSubItem && styles.subSettingTitle,
+          { color: colors.text }
         ]}>
           {item.title}
         </Text>
@@ -145,22 +159,22 @@ export default function SettingsScreen() {
         <Switch
           value={item.value}
           onValueChange={item.onToggle}
-          trackColor={{ false: Colors.gray[300], true: Colors.primary }}
-          thumbColor={Colors.white}
+          trackColor={{ false: colors.border, true: colors.primary }}
+          thumbColor={colors.surface}
         />
       ) : (
-        <Text style={styles.settingArrow}>›</Text>
+        <Text style={[styles.settingArrow, { color: colors.textSecondary }]}>›</Text>
       )}
     </TouchableOpacity>
   );
 
   const renderSettingSection = (title: string, items: SettingItem[], showSubItems = false) => (
     <View style={styles.settingSection}>
-      <Text style={styles.sectionTitle}>{title}</Text>
-      <View style={styles.sectionContent}>
+      <Text style={[styles.sectionTitle, { color: colors.textSecondary }]}>{title}</Text>
+      <View style={[styles.sectionContent, { backgroundColor: colors.surface }]}>
         {items.map((item) => renderSettingItem(item))}
         {showSubItems && (
-          <View style={styles.subItemsContainer}>
+          <View style={[styles.subItemsContainer, { borderTopColor: colors.border }]}>
             {backgroundSubSettings.map((item) => renderSettingItem(item, true))}
           </View>
         )}
@@ -168,12 +182,43 @@ export default function SettingsScreen() {
     </View>
   );
 
+  // Screen navigation logic
+  if (currentScreen === 'background') {
+    return (
+      <BackgroundCustomScreen
+        onBack={() => setCurrentScreen('settings')}
+      />
+    );
+  }
+
+  if (currentScreen === 'theme') {
+    return (
+      <ThemeSettingsScreen
+        onBack={() => setCurrentScreen('settings')}
+      />
+    );
+  }
+
+  if (currentScreen === 'tags') {
+    return (
+      <TagManagementScreen
+        onBack={() => setCurrentScreen('settings')}
+      />
+    );
+  }
+
   return (
-    <SafeAreaView style={styles.container}>
+    <SafeAreaView style={[styles.container, { backgroundColor: colors.background }]}>
       {/* Header */}
-      <View style={styles.header}>
-        <View style={styles.headerPlaceholder} />
-        <Text style={styles.headerTitle}>设置</Text>
+      <View style={[styles.header, { borderBottomColor: colors.border }]}>
+        {onBack ? (
+          <TouchableOpacity onPress={onBack} style={styles.backButton}>
+            <Text style={[styles.backIcon, { color: colors.text }]}>‹</Text>
+          </TouchableOpacity>
+        ) : (
+          <View style={styles.headerPlaceholder} />
+        )}
+        <Text style={[styles.headerTitle, { color: colors.text }]}>设置</Text>
         <View style={styles.headerPlaceholder} />
       </View>
 
@@ -190,7 +235,6 @@ export default function SettingsScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: Colors.background.light,
   },
   header: {
     flexDirection: 'row',
@@ -203,6 +247,15 @@ const styles = StyleSheet.create({
   },
   headerPlaceholder: {
     width: 40,
+  },
+  backButton: {
+    width: 40,
+    height: 40,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  backIcon: {
+    fontSize: 24,
   },
   headerTitle: {
     fontSize: 18,
@@ -225,7 +278,6 @@ const styles = StyleSheet.create({
     textTransform: 'uppercase',
   },
   sectionContent: {
-    backgroundColor: Colors.white,
     borderRadius: 12,
     overflow: 'hidden',
   },
@@ -236,11 +288,11 @@ const styles = StyleSheet.create({
     paddingHorizontal: 16,
     paddingVertical: 12,
     borderBottomWidth: 1,
-    borderBottomColor: Colors.gray[100],
+
   },
   subSettingItem: {
     paddingLeft: 48,
-    backgroundColor: Colors.gray[50],
+    opacity: 0.8,
   },
   settingLeft: {
     flexDirection: 'row',
@@ -266,17 +318,14 @@ const styles = StyleSheet.create({
   settingTitle: {
     fontSize: 16,
     fontWeight: '500',
-    color: Colors.foreground.light,
   },
   subSettingTitle: {
     fontSize: 14,
   },
   settingArrow: {
     fontSize: 20,
-    color: Colors.gray[400],
   },
   subItemsContainer: {
     borderTopWidth: 1,
-    borderTopColor: Colors.gray[200],
   },
 });

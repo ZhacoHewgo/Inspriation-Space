@@ -1,10 +1,20 @@
 export interface Inspiration {
   id: string;
+  title: string;
   content: string;
   category: 'learning' | 'research' | 'creation' | 'life';
   color?: string;
   createdAt: Date;
   updatedAt: Date;
+}
+
+export interface Notification {
+  id: string;
+  type: 'update' | 'reminder' | 'report' | 'achievement';
+  title: string;
+  content: string;
+  date: string;
+  isRead: boolean;
 }
 
 export interface User {
@@ -23,7 +33,7 @@ export type RootStackParamList = {
 };
 
 export type MainTabParamList = {
-  Record: undefined;
   Home: undefined;
+  AddInspiration: undefined;
   Settings: undefined;
 };

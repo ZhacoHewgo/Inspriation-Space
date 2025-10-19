@@ -3,6 +3,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { InspirationProvider } from '../context/InspirationContext';
+import CustomTabBar from '../components/CustomTabBar';
 
 import OnboardingScreen from '../screens/OnboardingScreen';
 import LoginScreen from '../screens/LoginScreen';
@@ -18,38 +19,27 @@ const Stack = createStackNavigator<RootStackParamList>();
 const Tab = createBottomTabNavigator<MainTabParamList>();
 
 function MainTabs() {
+  const [showAddModal, setShowAddModal] = useState(false);
+
   return (
     <Tab.Navigator
       screenOptions={{
         headerShown: false,
-        tabBarStyle: {
-          backgroundColor: '#ffffff',
-          borderTopWidth: 1,
-          borderTopColor: '#e5e7eb',
-          paddingBottom: 8,
-          paddingTop: 8,
-          height: 60,
-        },
-        tabBarActiveTintColor: '#13a4ec',
-        tabBarInactiveTintColor: '#6b7280',
-        tabBarLabelStyle: {
-          fontSize: 12,
-          fontWeight: '500',
-        },
       }}
+      tabBar={(props) => <CustomTabBar {...props} />}
     >
-      <Tab.Screen 
-        name="Record" 
-        component={RecordScreen}
-        options={{
-          tabBarLabel: '记录',
-        }}
-      />
       <Tab.Screen 
         name="Home" 
         component={HomeScreen}
         options={{
           tabBarLabel: '灵感空间',
+        }}
+      />
+      <Tab.Screen 
+        name="AddInspiration" 
+        component={RecordScreen}
+        options={{
+          tabBarLabel: '',
         }}
       />
       <Tab.Screen 
@@ -64,8 +54,9 @@ function MainTabs() {
 }
 
 export default function AppNavigator() {
-  const [isFirstLaunch, setIsFirstLaunch] = useState(true);
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  // For demo purposes, skip onboarding and authentication on web
+  const [isFirstLaunch, setIsFirstLaunch] = useState(false);
+  const [isAuthenticated, setIsAuthenticated] = useState(true);
 
   const handleOnboardingComplete = () => {
     setIsFirstLaunch(false);
