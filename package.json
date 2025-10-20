@@ -8,9 +8,10 @@
     "android": "expo start --android",
     "ios": "expo start --ios",
     "web": "expo start --web",
-    "build": "expo export -p web && node build-static.js",
+    "build": "expo export -p web && node build-static.js && node fix-html.js",
     "copy-static": "node build-static.js",
-    "vercel-build": "expo export -p web && node build-static.js",
+    "fix-html": "node fix-html.js",
+    "vercel-build": "expo export -p web && node build-static.js && node fix-html.js",
     "test": "jest",
     "lint": "eslint .",
     "type-check": "tsc --noEmit"

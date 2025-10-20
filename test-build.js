@@ -38,6 +38,27 @@ if (fs.existsSync(adsPath)) {
   }
 }
 
+// 检查dist/index.html中的AdSense代码
+const distIndexPath = path.join(__dirname, 'dist/index.html');
+if (fs.existsSync(distIndexPath)) {
+  const htmlContent = fs.readFileSync(distIndexPath, 'utf8');
+  if (htmlContent.includes('pub-7866441487993871')) {
+    console.log('✅ dist/index.html contains AdSense code');
+  } else {
+    console.log('❌ dist/index.html missing AdSense code');
+    allFilesExist = false;
+  }
+  
+  if (htmlContent.includes('google-adsense-account')) {
+    console.log('✅ dist/index.html contains AdSense meta tag');
+  } else {
+    console.log('❌ dist/index.html missing AdSense meta tag');
+    allFilesExist = false;
+  }
+} else {
+  console.log('⚠️  dist/index.html not found (run build first)');
+}
+
 // 检查package.json构建脚本
 const packagePath = path.join(__dirname, 'package.json');
 const packageJson = JSON.parse(fs.readFileSync(packagePath, 'utf8'));
