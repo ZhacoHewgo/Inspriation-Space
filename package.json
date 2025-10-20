@@ -11,7 +11,7 @@
     "build": "expo export -p web && node build-static.js && node fix-html.js",
     "copy-static": "node build-static.js",
     "fix-html": "node fix-html.js",
-    "vercel-build": "expo export -p web && node build-static.js && node fix-html.js",
+    "vercel-build": "node build-fallback.js",
     "test": "jest",
     "lint": "eslint .",
     "type-check": "tsc --noEmit"
@@ -35,6 +35,7 @@
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",
+    "@expo/cli": "^0.18.0",
     "@testing-library/react-native": "^12.4.0",
     "@types/react": "~19.1.10",
     "@types/react-native": "~0.73.0",
