@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8" />
+    <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1.00001,viewport-fit=cover" />
+    
+    <!-- Google AdSense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7866441487993871" crossorigin="anonymous"></script>
+    
+    <title>灵感空间 - 记录你的每一个灵感</title>
+    <meta name="description" content="灵感空间是一款专为大学生设计的灵感记录应用，帮助你捕捉、整理和管理学习、科研、创作和生活中的每一个宝贵灵感。" />
+    <meta name="keywords" content="灵感记录,大学生,学习工具,创意管理,笔记应用" />
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://inspiration-space.app/" />
+    <meta property="og:title" content="灵感空间 - 记录你的每一个灵感" />
+    <meta property="og:description" content="专为大学生设计的灵感记录应用，帮助你捕捉、整理和管理学习、科研、创作和生活中的每一个宝贵灵感。" />
+    <meta property="og:image" content="https://inspiration-space.app/og-image.png" />
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://inspiration-space.app/" />
+    <meta property="twitter:title" content="灵感空间 - 记录你的每一个灵感" />
+    <meta property="twitter:description" content="专为大学生设计的灵感记录应用，帮助你捕捉、整理和管理学习、科研、创作和生活中的每一个宝贵灵感。" />
+    <meta property="twitter:image" content="https://inspiration-space.app/og-image.png" />
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    
+    <!-- PWA -->
+    <link rel="manifest" href="/manifest.json" />
+    <meta name="theme-color" content="#13a4ec" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta name="apple-mobile-web-app-title" content="灵感空间" />
+    
+    <!-- Preload critical resources -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    
+    <style>
+        /* Loading screen styles */
+        #loading-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #13a4ec 0%, #1e40af 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            color: white;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        }
+        
+        .loading-logo {
+            width: 80px;
+            height: 80px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+            margin-bottom: 20px;
+            animation: pulse 2s infinite;
+        }
+        
+        .loading-text {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        
+        .loading-subtitle {
+            font-size: 14px;
+            opacity: 0.8;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+        
+        /* Hide loading screen when app loads */
+        .app-loaded #loading-screen {
+            display: none;
+        }
+        
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .loading-logo {
+                width: 60px;
+                height: 60px;
+                font-size: 24px;
+            }
+            .loading-text {
+                font-size: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div id="loading-screen">
+        <div class="loading-logo">💡</div>
+        <div class="loading-text">灵感空间</div>
+        <div class="loading-subtitle">正在加载...</div>
+    </div>
+    
+    <!-- App Root -->
+    <div id="root"></div>
+    
+    <!-- AdSense Auto Ads (optional) -->
+    <script>
+        (adsbygoogle = window.adsbygoogle || []).push({
+            google_ad_client: "ca-pub-7866441487993871",
+            enable_page_level_ads: true
+        });
+    </script>
+    
+    <!-- App Loading Script -->
+    <script>
+        // Hide loading screen when app is ready
+        window.addEventListener('load', function() {
+            setTimeout(function() {
+                document.body.classList.add('app-loaded');
+            }, 1000);
+        });
+        
+        // Fallback: hide loading screen after 5 seconds
+        setTimeout(function() {
+            document.body.classList.add('app-loaded');
+        }, 5000);
+    </script>
+</body>
+</html>

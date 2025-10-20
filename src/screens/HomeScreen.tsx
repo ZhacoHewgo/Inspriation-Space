@@ -26,6 +26,7 @@ import DrawingScreen from './DrawingScreen';
 import SettingsNavigationScreen from './SettingsNavigationScreen';
 import CategoryDetailScreen from './CategoryDetailScreen';
 import { getResponsiveStyles, getWebStyles } from '../utils/responsive';
+import { BannerAd } from '../components/AdSense';
 
 
 
@@ -654,8 +655,16 @@ export default function HomeScreen() {
             欢迎来到灵感空间，请记录下你每一个宝贵的灵感。
           </Text>
 
+          {/* Top Banner Ad */}
+          <BannerAd style={styles.topAd} />
+
           {/* Category Grid */}
           {renderCategoryGrid()}
+
+          {/* Content Ad */}
+          {filteredInspirations.length > 3 && (
+            <BannerAd style={styles.contentAd} />
+          )}
 
           {/* Inspirations List */}
           {renderInspirationsList()}
@@ -1123,5 +1132,24 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: 'bold',
     color: '#ffffff',
+  },
+  // 广告样式
+  topAd: {
+    width: '100%',
+    minHeight: 90,
+    marginVertical: 16,
+    backgroundColor: '#f8f9fa',
+    borderRadius: 8,
+    borderWidth: 1,
+    borderColor: '#e9ecef',
+  },
+  contentAd: {
+    width: '100%',
+    minHeight: 90,
+    marginVertical: 20,
+    backgroundColor: '#f8f9fa',
+    borderRadius: 8,
+    borderWidth: 1,
+    borderColor: '#e9ecef',
   },
 });

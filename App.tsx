@@ -7,6 +7,7 @@ import { BackgroundProvider } from './src/context/BackgroundContext';
 import AppNavigator from './src/navigation/AppNavigator';
 import WebAlert from './src/components/WebAlert';
 import { setWebAlertHandler } from './src/utils/alert';
+import { adsenseManager } from './src/utils/adsense';
 
 interface AlertOptions {
   title: string;
@@ -25,6 +26,9 @@ export default function App() {
     setWebAlertHandler((options: AlertOptions) => {
       setAlertOptions(options);
     });
+    
+    // 初始化AdSense
+    adsenseManager.initialize();
   }, []);
 
   return (

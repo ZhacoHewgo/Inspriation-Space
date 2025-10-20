@@ -22,7 +22,24 @@
     },
     "web": {
       "favicon": "./assets/favicon.png",
-      "bundler": "metro"
+      "bundler": "metro",
+      "build": {
+        "babel": {
+          "include": ["@expo/vector-icons"]
+        }
+      },
+      "template": "./web/index.html",
+      "name": "灵感空间",
+      "shortName": "灵感空间",
+      "lang": "zh-CN",
+      "scope": "/",
+      "themeColor": "#13a4ec",
+      "description": "专为大学生设计的灵感记录应用，帮助你捕捉、整理和管理学习、科研、创作和生活中的每一个宝贵灵感。",
+      "dir": "ltr",
+      "display": "standalone",
+      "orientation": "portrait-primary",
+      "startUrl": "/",
+      "preferRelatedApplications": false
     }
   }
 }
