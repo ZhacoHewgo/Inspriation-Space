@@ -1,4 +1,5 @@
-import React, { createContext, useContext, useState, ReactNode } from 'react';
+import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
+import { Storage, STORAGE_KEYS } from '../utils/storage';
 
 export interface Inspiration {
   id: string;
@@ -62,6 +63,39 @@ const initialInspirations: Inspiration[] = [
 
 export function InspirationProvider({ children }: { children: ReactNode }) {
   const [inspirations, setInspirations] = useState<Inspiration[]>(initialInspirations);
+  const [isLoaded, setIsLoaded] = useState(false);
+
+  // 加载存储的数据
+  useEffect(() => {
+    const loadInspirations = async () => {
+      try {
+        const stored = await Storage.getItem(STORAGE_KEYS.INSPIRATIONS);
+        if (stored) {
+          const parsedInspirations = JSON.parse(stored).map((item: any) => ({
+            ...item,
+            createdAt: new Date(item.createdAt),
+            updatedAt: new Date(item.updatedAt),
+          }));
+          setInspirations(parsedInspirations);
+        }
+      } catch (error) {
+        console.warn('Failed to load inspirations:', error);
+      } finally {
+        setIsLoaded(true);
+      }
+    };
+
+    loadInspirations();
+  }, []);
+
+  // 保存数据到存储
+  const saveInspirations = async (newInspirations: Inspiration[]) => {
+    try {
+      await Storage.setItem(STORAGE_KEYS.INSPIRATIONS, JSON.stringify(newInspirations));
+    } catch (error) {
+      console.warn('Failed to save inspirations:', error);
+    }
+  };
 
   const addInspiration = (inspirationData: Omit<Inspiration, 'id' | 'createdAt' | 'updatedAt'>) => {
     const newInspiration: Inspiration = {
@@ -70,21 +104,25 @@ export function InspirationProvider({ children }: { children: ReactNode }) {
       createdAt: new Date(),
       updatedAt: new Date(),
     };
-    setInspirations(prev => [newInspiration, ...prev]);
+    const newInspirations = [newInspiration, ...inspirations];
+    setInspirations(newInspirations);
+    saveInspirations(newInspirations);
   };
 
   const updateInspiration = (id: string, updates: Partial<Inspiration>) => {
-    setInspirations(prev =>
-      prev.map(inspiration =>
-        inspiration.id === id
-          ? { ...inspiration, ...updates, updatedAt: new Date() }
-          : inspiration
-      )
+    const newInspirations = inspirations.map(inspiration =>
+      inspiration.id === id
+        ? { ...inspiration, ...updates, updatedAt: new Date() }
+        : inspiration
     );
+    setInspirations(newInspirations);
+    saveInspirations(newInspirations);
   };
 
   const deleteInspiration = (id: string) => {
-    setInspirations(prev => prev.filter(inspiration => inspiration.id !== id));
+    const newInspirations = inspirations.filter(inspiration => inspiration.id !== id);
+    setInspirations(newInspirations);
+    saveInspirations(newInspirations);
   };
 
   const getInspirationsByCategory = (category: string) => {

@@ -12,6 +12,9 @@ import {
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useTheme } from '../context/ThemeContext';
 import { useBackground } from '../context/BackgroundContext';
+import { showAlert } from '../utils/alert';
+import { getResponsiveStyles, getWebStyles } from '../utils/responsive';
+import { WebImageUpload } from '../utils/imageUpload';
 
 interface BackgroundCustomScreenProps {
   onBack: () => void;
@@ -91,6 +94,8 @@ const presetBackgrounds = [
 export default function BackgroundCustomScreen({ onBack, category }: BackgroundCustomScreenProps) {
   const { colors } = useTheme();
   const { updateCategoryBackground } = useBackground();
+  const responsiveStyles = getResponsiveStyles();
+  const webStyles = getWebStyles();
   const [selectedBackground, setSelectedBackground] = useState<string | null>(null);
   const [selectedCategory, setSelectedCategory] = useState<string>(category || 'learning');
   const [showPreview, setShowPreview] = useState(false);
@@ -104,33 +109,51 @@ export default function BackgroundCustomScreen({ onBack, category }: BackgroundC
   };
 
   const handleUploadPhoto = () => {
-    Alert.alert(
+    showAlert(
       '上传照片',
       '选择照片来源',
       [
         { text: '取消', style: 'cancel' },
         { 
           text: '相机拍摄', 
-          onPress: () => {
-            // 模拟相机功能
-            Alert.alert('相机功能', '在真实设备上，这里会打开相机让您拍摄照片。\n\n当前为演示模式，已为您选择了一张示例照片。', [
-              { text: '确定', onPress: () => {
-                setSelectedBackground('camera_photo');
-                setShowPreview(true);
-              }}
-            ]);
+          onPress: async () => {
+            const result = await WebImageUpload.takePhoto();
+            if (result.success && result.uri) {
+              // 创建自定义背景项
+              const customBackground = {
+                id: 'custom_camera_' + Date.now(),
+                name: '相机拍摄',
+                url: result.uri,
+                category: 'user_photo',
+              };
+              // 添加到预设背景列表
+              presetBackgrounds.push(customBackground);
+              setSelectedBackground(customBackground.id);
+              setShowPreview(true);
+            } else {
+              showAlert('错误', result.error || '拍照失败');
+            }
           }
         },
         { 
           text: '相册选择', 
-          onPress: () => {
-            // 模拟相册功能
-            Alert.alert('相册功能', '在真实设备上，这里会打开相册让您选择照片。\n\n当前为演示模式，已为您选择了一张示例照片。', [
-              { text: '确定', onPress: () => {
-                setSelectedBackground('gallery_photo');
-                setShowPreview(true);
-              }}
-            ]);
+          onPress: async () => {
+            const result = await WebImageUpload.pickImage();
+            if (result.success && result.uri) {
+              // 创建自定义背景项
+              const customBackground = {
+                id: 'custom_gallery_' + Date.now(),
+                name: '相册照片',
+                url: result.uri,
+                category: 'user_photo',
+              };
+              // 添加到预设背景列表
+              presetBackgrounds.push(customBackground);
+              setSelectedBackground(customBackground.id);
+              setShowPreview(true);
+            } else if (result.error !== 'User cancelled') {
+              showAlert('错误', result.error || '选择照片失败');
+            }
           }
         },
       ]
@@ -166,7 +189,7 @@ export default function BackgroundCustomScreen({ onBack, category }: BackgroundC
       if (background) {
         updateCategoryBackground(selectedCategory, background.url);
         const categoryName = categoryLabels[selectedCategory as keyof typeof categoryLabels];
-        Alert.alert('成功', `背景已应用到"${categoryName}"类别`, [
+        showAlert('成功', `背景已应用到"${categoryName}"类别`, [
           { text: '确定', onPress: onBack }
         ]);
       }
@@ -291,7 +314,7 @@ export default function BackgroundCustomScreen({ onBack, category }: BackgroundC
         <View style={styles.placeholder} />
       </View>
 
-      <ScrollView style={styles.content}>
+      <ScrollView style={[styles.content, webStyles.container]}>
         {/* Category Selection */}
         <View style={styles.categorySelectionSection}>
           <Text style={[styles.sectionTitle, { color: colors.text }]}>选择类别</Text>
@@ -344,6 +367,7 @@ export default function BackgroundCustomScreen({ onBack, category }: BackgroundC
                 key={background.id}
                 style={[
                   styles.presetItem,
+                  { width: responsiveStyles.cardWidth },
                   selectedBackground === background.id && styles.presetItemSelected,
                   { borderColor: selectedBackground === background.id ? colors.primary : colors.border }
                 ]}
@@ -476,7 +500,6 @@ const styles = StyleSheet.create({
     gap: 12,
   },
   presetItem: {
-    width: '47%',
     aspectRatio: 1,
     borderRadius: 12,
     overflow: 'hidden',

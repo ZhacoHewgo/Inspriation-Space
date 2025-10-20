@@ -1,4 +1,5 @@
-import React, { createContext, useContext, useState, ReactNode } from 'react';
+import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
+import { Storage, STORAGE_KEYS } from '../utils/storage';
 
 interface BackgroundContextType {
   categoryBackgrounds: Record<string, string>;
@@ -17,11 +18,35 @@ const BackgroundContext = createContext<BackgroundContextType | undefined>(undef
 export function BackgroundProvider({ children }: { children: ReactNode }) {
   const [categoryBackgrounds, setCategoryBackgrounds] = useState<Record<string, string>>(defaultBackgrounds);
 
-  const updateCategoryBackground = (category: string, backgroundUrl: string) => {
-    setCategoryBackgrounds(prev => ({
-      ...prev,
+  // 加载存储的背景设置
+  useEffect(() => {
+    const loadBackgrounds = async () => {
+      try {
+        const stored = await Storage.getItem(STORAGE_KEYS.CATEGORY_BACKGROUNDS);
+        if (stored) {
+          const parsedBackgrounds = JSON.parse(stored);
+          setCategoryBackgrounds({ ...defaultBackgrounds, ...parsedBackgrounds });
+        }
+      } catch (error) {
+        console.warn('Failed to load backgrounds:', error);
+      }
+    };
+
+    loadBackgrounds();
+  }, []);
+
+  const updateCategoryBackground = async (category: string, backgroundUrl: string) => {
+    const newBackgrounds = {
+      ...categoryBackgrounds,
       [category]: backgroundUrl,
-    }));
+    };
+    setCategoryBackgrounds(newBackgrounds);
+    
+    try {
+      await Storage.setItem(STORAGE_KEYS.CATEGORY_BACKGROUNDS, JSON.stringify(newBackgrounds));
+    } catch (error) {
+      console.warn('Failed to save backgrounds:', error);
+    }
   };
 
   return (

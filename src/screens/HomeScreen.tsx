@@ -25,6 +25,7 @@ import NotificationScreen from './NotificationScreen';
 import DrawingScreen from './DrawingScreen';
 import SettingsNavigationScreen from './SettingsNavigationScreen';
 import CategoryDetailScreen from './CategoryDetailScreen';
+import { getResponsiveStyles, getWebStyles } from '../utils/responsive';
 
 
 
@@ -40,6 +41,8 @@ export default function HomeScreen() {
   const { colors } = useTheme();
   const { showAddInspirationModal, setShowAddInspirationModal } = useModal();
   const { categoryBackgrounds } = useBackground();
+  const responsiveStyles = getResponsiveStyles();
+  const webStyles = getWebStyles();
   const [searchText, setSearchText] = useState('');
   const [newInspirationText, setNewInspirationText] = useState('');
   const [newInspirationCategory, setNewInspirationCategory] = useState<'learning' | 'research' | 'creation' | 'life'>('life');
@@ -410,11 +413,14 @@ export default function HomeScreen() {
   );
 
   const renderCategoryGrid = () => (
-    <View style={styles.categoryGrid}>
+    <View style={[styles.categoryGrid, webStyles.container]}>
       {Object.entries(categoryLabels).map(([key, label]) => (
         <TouchableOpacity
           key={key}
-          style={styles.categoryCard}
+          style={[
+            styles.categoryCard,
+            { width: responsiveStyles.cardWidth }
+          ]}
           onPress={() => {
             setCurrentCategoryView(key);
             setCurrentScreen('category');
@@ -642,7 +648,7 @@ export default function HomeScreen() {
           </View>
         </View>
 
-        <ScrollView style={styles.content}>
+        <ScrollView style={[styles.content, webStyles.container]}>
           {/* Welcome Message */}
           <Text style={[styles.welcomeText, { color: colors.textSecondary }]}>
             欢迎来到灵感空间，请记录下你每一个宝贵的灵感。
@@ -767,12 +773,13 @@ const styles = StyleSheet.create({
     flexWrap: 'wrap',
     gap: 16,
     marginBottom: 24,
+    justifyContent: 'space-between',
   },
   categoryCard: {
-    width: '47%',
     aspectRatio: 1,
     borderRadius: 12,
     overflow: 'hidden',
+    minWidth: 150,
   },
   categoryBackground: {
     flex: 1,
@@ -848,12 +855,14 @@ const styles = StyleSheet.create({
     borderRadius: 12,
     padding: 16,
     borderWidth: 1,
-    shadowColor: '#000000',
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.1,
-    shadowRadius: 4,
-    elevation: 3,
     marginBottom: 12,
+    ...(Platform.OS !== 'web' && {
+      shadowColor: '#000000',
+      shadowOffset: { width: 0, height: 2 },
+      shadowOpacity: 0.1,
+      shadowRadius: 4,
+      elevation: 3,
+    }),
   },
   cardHeader: {
     flexDirection: 'row',
@@ -943,11 +952,13 @@ const styles = StyleSheet.create({
     padding: 24,
     width: '100%',
     maxWidth: 400,
-    shadowColor: '#000000',
-    shadowOffset: { width: 0, height: 4 },
-    shadowOpacity: 0.3,
-    shadowRadius: 8,
-    elevation: 8,
+    ...(Platform.OS !== 'web' && {
+      shadowColor: '#000000',
+      shadowOffset: { width: 0, height: 4 },
+      shadowOpacity: 0.3,
+      shadowRadius: 8,
+      elevation: 8,
+    }),
   },
   filterModal: {
     borderRadius: 12,

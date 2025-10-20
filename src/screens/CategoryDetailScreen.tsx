@@ -12,6 +12,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { useInspiration } from '../context/InspirationContext';
 import { useTheme } from '../context/ThemeContext';
 import { useBackground } from '../context/BackgroundContext';
+import { getResponsiveStyles, getWebStyles } from '../utils/responsive';
 
 interface CategoryDetailScreenProps {
   category: string;
@@ -36,6 +37,8 @@ export default function CategoryDetailScreen({
   const { inspirations } = useInspiration();
   const { colors } = useTheme();
   const { categoryBackgrounds } = useBackground();
+  const responsiveStyles = getResponsiveStyles();
+  const webStyles = getWebStyles();
   const [searchText, setSearchText] = useState('');
   const [filteredInspirations, setFilteredInspirations] = useState(
     inspirations.filter(inspiration => inspiration.category === category)
@@ -111,7 +114,7 @@ export default function CategoryDetailScreen({
       </View>
 
       {/* Inspirations List */}
-      <ScrollView style={styles.content}>
+      <ScrollView style={[styles.content, webStyles.container]}>
         {filteredInspirations.length === 0 ? (
           <View style={styles.emptyState}>
             <Text style={[styles.emptyStateIcon, { color: categoryColor }]}>💡</Text>
