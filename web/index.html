@@ -2,11 +2,18 @@
 <html lang="zh-CN">
 <head>
     <meta charset="utf-8" />
-    <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1.00001,viewport-fit=cover" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes" />
     
-    <!-- Google AdSense -->
+    <!-- Google AdSense - 必须在head标签的最前面 -->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7866441487993871" crossorigin="anonymous"></script>
+    
+    <!-- Google AdSense 验证标签 -->
+    <meta name="google-adsense-account" content="ca-pub-7866441487993871">
+    
+    <!-- 网站验证 -->
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+    <meta name="googlebot" content="index, follow" />
     
     <title>灵感空间 - 记录你的每一个灵感</title>
     <meta name="description" content="灵感空间是一款专为大学生设计的灵感记录应用，帮助你捕捉、整理和管理学习、科研、创作和生活中的每一个宝贵灵感。" />
@@ -105,9 +112,86 @@
                 font-size: 20px;
             }
         }
+        
+        /* 初始内容样式 */
+        #initial-content {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        #initial-content header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        #initial-content h1 {
+            color: #13a4ec;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+        
+        #initial-content nav ul {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+        
+        #initial-content nav a {
+            color: #13a4ec;
+            text-decoration: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        
+        #initial-content nav a:hover {
+            background-color: #f0f8ff;
+        }
+        
+        .category-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .category {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 4px solid #13a4ec;
+        }
+        
+        .category h3 {
+            color: #13a4ec;
+            margin-top: 0;
+        }
+        
+        #initial-content footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #eee;
+            color: #666;
+        }
     </style>
 </head>
 <body>
+    <!-- 为SEO和AdSense添加一些可见内容 -->
+    <noscript>
+        <div style="text-align: center; padding: 50px; font-family: Arial, sans-serif;">
+            <h1>灵感空间 - 记录你的每一个灵感</h1>
+            <p>灵感空间是一款专为大学生设计的灵感记录应用，帮助你捕捉、整理和管理学习、科研、创作和生活中的每一个宝贵灵感。</p>
+            <p>请启用JavaScript以获得最佳体验。</p>
+        </div>
+    </noscript>
+
     <!-- Loading Screen -->
     <div id="loading-screen">
         <div class="loading-logo">💡</div>
@@ -116,7 +200,57 @@
     </div>
     
     <!-- App Root -->
-    <div id="root"></div>
+    <div id="root">
+        <!-- 初始内容，帮助搜索引擎理解页面 -->
+        <div id="initial-content" style="display: none;">
+            <header>
+                <h1>灵感空间 - 记录你的每一个灵感</h1>
+                <nav>
+                    <ul>
+                        <li><a href="#home">首页</a></li>
+                        <li><a href="#categories">分类</a></li>
+                        <li><a href="#statistics">统计</a></li>
+                        <li><a href="#settings">设置</a></li>
+                    </ul>
+                </nav>
+            </header>
+            <main>
+                <section id="home">
+                    <h2>欢迎来到灵感空间</h2>
+                    <p>在这里记录下你每一个宝贵的灵感。</p>
+                </section>
+                <section id="categories">
+                    <h2>灵感分类</h2>
+                    <div class="category-list">
+                        <div class="category">
+                            <h3>学习</h3>
+                            <p>记录学习过程中的心得体会和方法总结</p>
+                        </div>
+                        <div class="category">
+                            <h3>科研</h3>
+                            <p>科研想法、研究方向和学术灵感</p>
+                        </div>
+                        <div class="category">
+                            <h3>创作</h3>
+                            <p>创意设计、艺术创作和项目构思</p>
+                        </div>
+                        <div class="category">
+                            <h3>生活</h3>
+                            <p>日常生活中的感悟和有趣想法</p>
+                        </div>
+                    </div>
+                </section>
+            </main>
+            <footer>
+                <p>&copy; 2024 灵感空间. 专为大学生设计的灵感记录应用.</p>
+                <nav>
+                    <a href="/privacy-policy.html">隐私政策</a> | 
+                    <a href="/terms-of-service.html">服务条款</a> | 
+                    <a href="mailto:support@inspiration-space.app">联系我们</a>
+                </nav>
+            </footer>
+        </div>
+    </div>
     
     <!-- AdSense Auto Ads (optional) -->
     <script>

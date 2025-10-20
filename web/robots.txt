@@ -1,0 +1,16 @@
+User-agent: *
+Allow: /
+
+# AdSense
+User-agent: Mediapartners-Google
+Allow: /
+
+# Google AdSense
+User-agent: AdsBot-Google
+Allow: /
+
+# Sitemap
+Sitemap: https://your-domain.com/sitemap.xml
+
+# 允许所有搜索引擎访问
+Crawl-delay: 1

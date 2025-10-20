@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { StatusBar } from 'expo-status-bar';
+import { Platform } from 'react-native';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { ThemeProvider } from './src/context/ThemeContext';
 import { ModalProvider } from './src/context/ModalContext';
@@ -29,6 +30,14 @@ export default function App() {
     
     // 初始化AdSense
     adsenseManager.initialize();
+    
+    // 隐藏初始内容，显示React应用
+    if (Platform.OS === 'web' && typeof document !== 'undefined') {
+      const initialContent = document.getElementById('initial-content');
+      if (initialContent) {
+        initialContent.style.display = 'none';
+      }
+    }
   }, []);
 
   return (
